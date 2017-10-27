@@ -7,6 +7,7 @@ import 'admin-lte/dist/js/app.min';
 import axios from 'axios';
 import store from './store';
 import {Provider} from "react-redux";
+
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
