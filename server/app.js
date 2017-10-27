@@ -18,7 +18,7 @@ app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(session({secret: 'keyboard cat', saveUninitialized: false, provide: false}));
+app.use(session({secret: 'keyboard cat', saveUninitialized: false, provide: false,resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
