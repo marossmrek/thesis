@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
-import {Navigation} from './navigation';
-import {Timetable} from './timetable';
-import {Form} from './form';
-import {LandingPage} from './landingPage';
-import {Profile} from './profile';
+import './Styles/App.css';
+import {Navigation} from './Components/navigation';
+import {Timetable} from './Components/timetable';
+import {Form} from './Components/form';
+import {LandingPage} from './Components/landingPage';
+import {Profile} from './Components/profile';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Login} from './login';
 import {Register} from './register';
-import {User} from './Service/user-service';
+import {User} from '../Service/user-service';
 
 export class Form extends React.Component {
 

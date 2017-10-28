@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
-import {User} from './Service/user-service';
+import {User} from '../Service/user-service';
 
 const validate = values => {
     const errors = {};

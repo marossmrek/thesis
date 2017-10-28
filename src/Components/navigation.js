@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-import {User} from './Service/user-service';
+import {User} from '../Service/user-service';
 
 export class Navigation extends React.Component {
 

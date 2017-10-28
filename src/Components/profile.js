@@ -1,5 +1,5 @@
 import React from 'react';
-import {User} from './Service/user-service';
+import {User} from '../Service/user-service';
 
 export class Profile extends React.Component {
 
