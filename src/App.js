@@ -7,17 +7,19 @@ import {LandingPage} from './Components/landingPage';
 import {Profile} from './Components/profile';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
+import createBrowserHistory from 'history/createBrowserHistory'
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            logUser : JSON.parse(this.props.root.UserLoggedIn)
+            logUser: JSON.parse(this.props.root.UserLoggedIn)
         }
     }
 
     render() {
+        const customHistory = createBrowserHistory();
 
         let routing = null;
 
@@ -26,7 +28,7 @@ class App extends React.Component {
                 <div>
                     <Redirect to="/app"/>
                     <Route path="/app" component={(props) => {
-                        return <Navigation loggedOut={this.props.loggedIn} user={this.state.logUser}/>
+                        return <Navigation history={customHistory} loggedOut={this.props.loggedIn} user={this.state.logUser}/>
                     }}/>
                     <Route exact path="/app/timetable" component={Timetable}/>
                     <Route exact path="/app/profile/:id" component={Profile}/>
@@ -36,15 +38,16 @@ class App extends React.Component {
                 <div>
                     <Route exact path="/" component={LandingPage}/>
                     <Route exact path="/login" component={(props) => {
-                        return <Form loggedIn={this.props.loggedIn}/>
+                        return <Form history={customHistory} loggedIn={this.props.loggedIn}/>
+                    }}/>
+                    <Route exact path="/register" component={(props) => {
+                        return <Form history={customHistory} loggedIn={this.props.loggedIn}/>
                     }}/>
                 </div>
         );
 
         return (
-            <Router>
-                {routing}
-            </Router>
+            <Router history={customHistory}>{routing}</Router>
         );
     }
 }

@@ -19,7 +19,6 @@ const renderField = ({input, label, icon, type, meta: {touched, error, warning}}
     <div>
         {touched && error && <div className="alert alert-danger alert-dismissible">
             <button type="button" className="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i className="icon fa fa-ban"></i>Wrong!</h4>
             {error}
         </div>}
         <div className="form-group has-feedback">

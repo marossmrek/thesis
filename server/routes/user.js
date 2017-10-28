@@ -16,7 +16,7 @@ router.post('/register', (req, res) => {
     req.checkBody('password', 'Password is require').notEmpty();
     req.checkBody('password2', 'Repeat password not matches password').notEmpty().matches(req.body.password);
 
-    let errors = req.getValidationResult();
+    let errors = req.validationErrors();
     if (errors) {
         res.status(500).end();
     }

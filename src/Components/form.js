@@ -1,10 +1,20 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Login} from './login';
 import {Register} from './register';
 import {User} from '../Service/user-service';
 
 export class Form extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            alert:{
+                open:false,
+                classColor:"info",
+                text:""
+            }
+        }
+    }
 
     RegisterSubmit = (values) => {
         this.RegisterNewUser(values);
@@ -12,8 +22,16 @@ export class Form extends React.Component {
 
     async RegisterNewUser(newUser) {
         const result = await User.register(newUser);
+
         if (result.status === 204) {
-            window.location.href = "http://localhost:3000/login";
+            this.props.history.push('/login');
+            this.setState({
+                alert:{
+                    open:true,
+                    classColor:"success",
+                    text:"Registration success"
+                }
+            })
         } else {
             console.log("Something wrong on server");
         }
@@ -25,9 +43,10 @@ export class Form extends React.Component {
 
     async LoginUser(values) {
         const user = await User.login(values);
+
         if (user) {
             this.props.loggedIn(user);
-            window.location.href = "http://localhost:3000/app";
+            window.location.href = window.location + "/app"
         } else {
             console.log("Something wrong on server");
         }
@@ -35,16 +54,13 @@ export class Form extends React.Component {
 
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/register" component={(props) => {
-                        return <Register onSubmit={this.RegisterSubmit}/>
-                    }}/>
-                    <Route path="/login" component={(props) => {
-                        return <Login onSubmit={this.LoginSubmit}/>
-                    }}/>
-                </Switch>
-            </Router>
+            <div>
+                {this.state.alert.open && <div className={`alert alert-${this.state.alert.classColor}`}
+                                               role="alert">{this.state.alert.text}</div>}
+                {window.location.pathname === "/login" ? <Login onSubmit={this.LoginSubmit}/>
+                    : <Register onSubmit={this.RegisterSubmit}/>
+                }
+            </div>
         )
     }
 }
