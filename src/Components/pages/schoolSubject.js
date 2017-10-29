@@ -1,35 +1,13 @@
 import React from 'react';
-import {User} from '../Service/user-service';
 
-export class Profile extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            profile: ''
-        }
-    }
-
-    componentWillMount() {
-        this.loadProfile();
-    }
-
-    async loadProfile() {
-        const profile  = await User.getProfileByID(this.props.match.params.id);
-        if(profile){
-            this.setState({
-                profile: profile
-            });
-        }
-    };
-
+export class SchoolSubject extends React.Component {
     render() {
-        return(
+        return (
             <div>
                 <div className="content-wrapper" style={{minHeight: "916px"}}>
                     <section className="content-header">
                         <h1>
-                            My profile
+                            Prepare for students list of school subjects
                         </h1>
                     </section>
                     <section className="content">
