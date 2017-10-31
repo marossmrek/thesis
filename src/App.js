@@ -1,13 +1,14 @@
 import React from 'react';
 import './Styles/App.css';
-import {Navigation} from './Components/navigation';
-import {Timetable} from './Components/timetable';
-import {Form} from './Components/form';
-import {LandingPage} from './Components/landingPage';
-import {Profile} from './Components/profile';
+import {WrapperNav} from './Components/navigation/wrapperNav';
+import {SchoolSubject} from './Components/pages/schoolSubject';
+import {Form} from './Components/form/form';
+import {LandingPage} from './Components/landingPage/landingPage';
+import {Profile} from './Components/pages/profile';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import createBrowserHistory from 'history/createBrowserHistory'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
 
@@ -28,9 +29,9 @@ class App extends React.Component {
                 <div>
                     <Redirect to="/app"/>
                     <Route path="/app" component={(props) => {
-                        return <Navigation history={customHistory} loggedOut={this.props.loggedIn} user={this.state.logUser}/>
+                        return <WrapperNav history={customHistory} loggedOut={this.props.loggedIn} user={this.state.logUser}/>
                     }}/>
-                    <Route exact path="/app/timetable" component={Timetable}/>
+                    <Route exact path="/app/subjects" component={SchoolSubject}/>
                     <Route exact path="/app/profile/:id" component={Profile}/>
                 </div>
         ) : (
@@ -47,7 +48,9 @@ class App extends React.Component {
         );
 
         return (
-            <Router history={customHistory}>{routing}</Router>
+            <MuiThemeProvider>
+                <Router history={customHistory}>{routing}</Router>
+            </MuiThemeProvider>
         );
     }
 }

@@ -61,4 +61,11 @@ router.get('/profile/:id', async (req, res) => {
     res.send(user).end();
 });
 
+//update user profile
+router.post('/profile/:id', async (req, res) => {
+    let updateProfile = await User.findById(req.params.id);
+    await updateProfile.$query().update(req.body);
+    res.send(updateProfile).end();
+});
+
 module.exports = router;
