@@ -8,6 +8,7 @@ import {Profile} from './Components/pages/profile';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import createBrowserHistory from 'history/createBrowserHistory'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
 
@@ -47,7 +48,9 @@ class App extends React.Component {
         );
 
         return (
-            <Router history={customHistory}>{routing}</Router>
+            <MuiThemeProvider>
+                <Router history={customHistory}>{routing}</Router>
+            </MuiThemeProvider>
         );
     }
 }

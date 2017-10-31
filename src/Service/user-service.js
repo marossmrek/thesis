@@ -23,4 +23,8 @@ export class User {
         return _.values((await axios.get(`http://localhost:5000/profile/${id}`)).data);
     }
 
+    static async updateProfileByID(id,newValues) {
+        return _.values((await axios.post(`http://localhost:5000/profile/${id}`, newValues)).data);
+    }
+
 }

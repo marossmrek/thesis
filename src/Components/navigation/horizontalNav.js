@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export const HorizontalNav = (props) => (
 
-        <header className="main-header">
+        <header style={{width:"100%", position:"fixed"}} className="main-header">
             <Link to='/app' className="logo">
                 <span className="logo-mini"><b>F</b>HI</span>
                 <span className="logo-lg"><b>EUBA</b>FHI</span>

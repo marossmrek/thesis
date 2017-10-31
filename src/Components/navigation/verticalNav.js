@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export const VerticalNav = (props) => (
 
-    <aside className="main-sidebar">
+    <aside className="main-sidebar" style={{position:"fixed"}}>
         <section className="sidebar">
             <div className="user-panel">
                 <div className="pull-left image">
